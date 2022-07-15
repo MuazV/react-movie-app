@@ -23,6 +23,7 @@ const Main = () => {
 
   const [input, setInput] = useState("");
   const [movies, setMovies] = useState([]);
+  const [state, setState] = useState(true)
 
   let apiKey = process.env.REACT_APP_API_KEY;
   let url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${input}`;
@@ -34,12 +35,11 @@ const Main = () => {
   };
   useEffect(() => {
     getData();
-  }, []);
 
-  const handleClick = () => {
-    getData();
-    setInput("");
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
+
+ 
 
   console.log(movies);
 
@@ -53,7 +53,7 @@ const Main = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <Button variant="contained" onClick={handleClick}>
+        <Button variant="contained" onClick={() => setState(!state)}>
           Search
         </Button>
       </Box>
@@ -66,7 +66,7 @@ const Main = () => {
           const { id} = itemm
           return (<Grid item xs={2} sm={4} md={3} key={id}>
             <Item 
-            onClick={() => navigate(`${id}`, { state: itemm })}>
+            onClick={() => navigate(`/MovieDetail/${id}`, { state: itemm })}>
               {<Movie itemm={itemm} />}
             </Item>
           </Grid>)
