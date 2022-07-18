@@ -11,8 +11,9 @@ const Router = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/Main" element={<Main />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/MovieDetail/:id" element={<MovieDetail />}/>
+        <Route path="/Main/:id" element={<MovieDetail />}/>
       </Routes>
     </BrowserRouter>
   );

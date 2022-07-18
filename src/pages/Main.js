@@ -66,7 +66,7 @@ const Main = () => {
           const { id} = itemm
           return (<Grid item xs={2} sm={4} md={3} key={id}>
             <Item 
-            onClick={() => navigate(`/MovieDetail/${id}`, { state: itemm })}>
+            onClick={() => navigate(`/Main/${id}`, { state: itemm })}>
               {<Movie itemm={itemm} />}
             </Item>
           </Grid>)
