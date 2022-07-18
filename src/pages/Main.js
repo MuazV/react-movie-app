@@ -44,15 +44,16 @@ const Main = () => {
 
   return (
     <Container>
-      <Box sx={{ bgcolor: "lightgray" }}>
+      <Box sx={{margin:"1rem", textAlign:"center" }}>
         <TextField
-          id="standard-basic"
           placeholder="Search a Movie"
           variant="standard"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          sx={{marginRight:"2rem"}}
+          focused
         />
-        <Button variant="contained" onClick={() => (user ? setState(!state) : alert("Lütfen Giriş yapınız...")
+        <Button variant="contained" onClick={() => (user ? setState(!state) : alert("Hoooop Giriş yapmadan olmaz...")
         )}>
           Search
         </Button>
@@ -66,7 +67,7 @@ const Main = () => {
           const { id} = itemm
           return (<Grid item xs={2} sm={4} md={3} key={id}>
             <Item 
-            onClick={() => navigate(`/Main/${id}`, { state: itemm })}>
+            onClick={() => {user ? navigate(`/Main/${id}`, { state: itemm }) : alert("Giriş Yapmadan Nasıl içerigi Görcen Birader")}}>
               {<Movie itemm={itemm} />}
             </Item>
           </Grid>)
