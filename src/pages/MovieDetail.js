@@ -1,4 +1,4 @@
-import { useParams} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NotFound from "./NotFound";
@@ -6,15 +6,18 @@ import { Container } from "@mui/system";
 import Button from "@mui/material/Button";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Stack from "@mui/material/Stack";
+import CardMedia from "@mui/material/CardMedia";
+import Card from "@mui/material/Card";
+
+import Typography from "@mui/material/Typography";
 
 const MovieDetail = () => {
   const [mov, setMov] = useState(null);
   const [error, setError] = useState(false);
 
   const { id } = useParams();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
- 
   useEffect(() => {
     async function getData() {
       try {
@@ -30,6 +33,8 @@ const MovieDetail = () => {
     getData();
   }, [id]);
 
+ 
+
   if (error) {
     return <NotFound />;
   } else if (!mov) {
@@ -40,13 +45,35 @@ const MovieDetail = () => {
     </Stack>;
   } else {
     return (
-      <Container>
-        <h2>{mov.title}</h2>
-        <p>{mov.overview}</p>
-        <Button></Button>
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "1rem",
+        }}
+      >
+        <Typography variant="h4" component="div">
+          {mov.title}
+        </Typography>
+          <CardMedia
+            sx={{ width: "40%" }}
+            component="img"
+            image={mov.poster_path ? `https://image.tmdb.org/t/p/w300/${mov.poster_path}` : NotFound}
+          />
+        <Typography variant="body2" component="div">
+          {mov.overview}
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate(-1)}
+        >
+          Go Back
+        </Button>
       </Container>
     );
   }
 };
-
 export default MovieDetail;

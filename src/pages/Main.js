@@ -43,8 +43,8 @@ const Main = () => {
   }, [state]);
 
   return (
-    <Container>
-      <Box sx={{margin:"1rem", textAlign:"center" }}>
+    <Container sx={{backgroundColor: "#94BDF2"}}>
+      <Box sx={{padding:"1rem", textAlign:"center" }}>
         <TextField
           placeholder="Search a Movie"
           variant="standard"
