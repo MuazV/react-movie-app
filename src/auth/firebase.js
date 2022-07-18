@@ -1,11 +1,8 @@
 
 import {getAuth} from "firebase/auth"
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAJJybz_VV7r-WN2-yH6PEz951Pr09gvqI",
   authDomain: "movie-app-51767.firebaseapp.com",

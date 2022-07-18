@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
+import { useUserAuth } from "../context/UserAuthContext";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -19,11 +20,13 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Main = () => {
-  const navigate = useNavigate();
-
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("baby");
   const [movies, setMovies] = useState([]);
-  const [state, setState] = useState(true)
+  const [state, setState] = useState(true);
+
+  const {user} =useUserAuth();
+
+  const navigate = useNavigate();
 
   let apiKey = process.env.REACT_APP_API_KEY;
   let url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${input}`;
@@ -39,10 +42,6 @@ const Main = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
- 
-
-  console.log(movies);
-
   return (
     <Container>
       <Box sx={{ bgcolor: "lightgray" }}>
@@ -53,7 +52,8 @@ const Main = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <Button variant="contained" onClick={() => setState(!state)}>
+        <Button variant="contained" onClick={() => (user ? setState(!state) : alert("Lütfen Giriş yapınız...")
+        )}>
           Search
         </Button>
       </Box>

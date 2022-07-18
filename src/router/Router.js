@@ -4,17 +4,23 @@ import Navbar from "../components/Navbar";
 import Main from "../pages/Main";
 import MovieDetail from "../pages/MovieDetail";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
+import PrivateRouter from "../router/PrivateRouter";
+import { UserAuthContextProvider } from "../context/UserAuthContext";
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/Main" element={<Main />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Main/:id" element={<MovieDetail />}/>
-      </Routes>
+      <UserAuthContextProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/Main" element={<Main />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/Main/:id" element={<PrivateRouter><MovieDetail/></PrivateRouter>}/>
+        </Routes>
+      </UserAuthContextProvider>
     </BrowserRouter>
   );
 };
