@@ -58,7 +58,7 @@ const MovieDetail = () => {
           {mov.title}
         </Typography>
           <CardMedia
-            sx={{ width: "40%" }}
+            sx={{ width: "30%" }}
             component="img"
             image={mov.poster_path ? `https://image.tmdb.org/t/p/w300/${mov.poster_path}` : NotFound}
           />
