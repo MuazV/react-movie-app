@@ -53,7 +53,7 @@ const Main = () => {
           sx={{marginRight:"2rem"}}
           focused
         />
-        <Button variant="contained" onClick={() => (user ? setState(!state) : alert("Hoooop Giriş yapmadan olmaz...")
+        <Button variant="contained" onClick={() => (user ? setState(!state) : alert("Please Login to Search...")
         )}>
           Search
         </Button>
@@ -67,7 +67,7 @@ const Main = () => {
           const { id} = itemm
           return (<Grid item xs={2} sm={4} md={3} key={id}>
             <Item 
-            onClick={() => {user ? navigate(`/Main/${id}`, { state: itemm }) : alert("Giriş Yapmadan Nasıl içerigi Görcen Birader")}}>
+            onClick={() => {user ? navigate(`/Main/${id}`, { state: itemm }) : alert("Please Login to View Content...")}}>
               {<Movie itemm={itemm} />}
             </Item>
           </Grid>)
