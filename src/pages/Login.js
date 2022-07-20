@@ -102,7 +102,7 @@ const Login = () => {
             style={{ textDecoration: "none", color: "#0D65D9" }}
             to="/Register"
           >
-            Sign In
+            Sign Up
           </Link>
         </Typography>
       </Grid>

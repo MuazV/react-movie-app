@@ -7,8 +7,6 @@ import Button from "@mui/material/Button";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Stack from "@mui/material/Stack";
 import CardMedia from "@mui/material/CardMedia";
-import Card from "@mui/material/Card";
-
 import Typography from "@mui/material/Typography";
 
 const MovieDetail = () => {
