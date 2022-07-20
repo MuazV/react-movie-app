@@ -12,4 +12,4 @@ My purpose in making this project is to use the power of React Hooks on the page
 ***
 [Click Here To See All Page](https://movie-app2022.netlify.app/)
 ***
-![]()
+![](https://github.com/MuazV/react-movie-app/blob/master/src/assets/Animation.gif)
